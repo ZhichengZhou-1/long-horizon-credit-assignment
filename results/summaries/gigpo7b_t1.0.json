@@ -1,0 +1,32 @@
+{
+  "episodes": 400,
+  "success_rate": 0.78,
+  "mean_score": 0.8983,
+  "bought_rate": 0.955,
+  "mean_steps": 6.03,
+  "invalid_action_rate": 0.0174,
+  "lenient_parsed_rate": 0.0,
+  "truncated_responses": 20,
+  "llm_errors": 5,
+  "llm_calls": 2413,
+  "prompt_tokens_mean": 1149,
+  "prompt_tokens_max": 2521,
+  "completion_tokens_mean": 219,
+  "total_tokens": 3299948,
+  "wall_s": 571.4,
+  "tasks": 100,
+  "tasks_by_num_successes_out_of_4": {
+    "0": 19,
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 74
+  },
+  "model": "langfeng01/GiGPO-Qwen2.5-7B-Instruct-WebShop",
+  "temperature": 1.0,
+  "max_tokens": 512,
+  "tasks_spec": "0-99",
+  "n_per_task": 4,
+  "batch": 64,
+  "seed": 0
+}

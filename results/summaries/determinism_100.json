@@ -1,0 +1,19 @@
+{
+  "n_goals": 6910,
+  "n_tasks": 100,
+  "n_steps": 773,
+  "n_bought": 87,
+  "mean_len": 7.73,
+  "timing": {
+    "env_init_s": 304.5300621986389,
+    "rss_after_init_gb": 0.8292922973632812,
+    "record_s_per_step": 0.03904481939634099,
+    "replay_s_per_step": 0.026758904598971386,
+    "peak_rss_gb": 1.4001426696777344
+  },
+  "mismatches": {
+    "same_env": {},
+    "fresh_env": {},
+    "new_proc": {}
+  }
+}

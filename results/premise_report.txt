@@ -1,0 +1,45 @@
+Phase 1 premise check: replay branching, continuation policy langfeng01/GiGPO-Qwen2.5-7B-Instruct-WebShop (T=1.0), M=4
+run: $CREDIT_RUNS/branch_llm_full
+coverage: 30 tasks, 230 decision points, 9468 branches done of 9468 planned, state_ok 9468/9468
+noise: (t,a) pairs whose samples disagree on success: 202/2367; mean within-pair std of score 0.062
+cost: 48110 continuation LLM calls (20.3 per (t,a) pair, 209.2 per decision point), 70.7M tokens, wall 7332.3 s
+controls (always-success tasks): 21 steps, mean regret 0.000, max regret 0.000 (expect ~0)
+
+FAILED SOURCE TRAJECTORIES: 26 (always-fail 19, mixed 7)
+- has a flip step (one changed action turns failure into >=75% success): 15/26
+- earliest flip step is the LAST step: 0/15
+- position of earliest flip step: {'early': 12, 'middle': 3}
+- action type at earliest flip step: {'product': 8, 'search': 4, 'option': 2, 'invalid': 1}
+- trajectories with >= 2 flip steps (the same kind of mistake repeated): 10/15
+- max-regret step (regret >= 0.25) is the LAST step: 0/14
+- action type at max-regret step: {'product': 8, 'search': 5, 'option': 1}
+- credit concentration: median share of total positive regret at the top step 0.31
+- no flip anywhere (no single change rescues it under this policy): 11/26  idx [1, 14, 22, 28, 32, 33, 35, 43, 44, 45, 58]
+
+per failed trajectory: idx kind T src_score | earliest flip: t type orig -> alternative | max regret: t value type | #flip steps
+    1 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 9 0.42 search  | 0
+    6 fail   T=15 src=0.00 | flip t= 1 product click[b09nds8f4v] -> click[b09pvnlvrw] | max-regret t= 1 1.00 product | 3
+    9 fail   T= 8 src=0.71 | flip t= 1 product click[b09qqp3356] -> click[b07hrfsnl4] | max-regret t= 1 0.29 product | 2
+   10 mixed  T=15 src=0.00 | flip t= 0 search  search[men's shirts classic fit  -> search[men's shirts fit type: yo | max-regret t= 4 0.95 search  | 4
+   12 fail   T= 5 src=0.67 | flip t= 1 product click[b09npml43m] -> click[b097rk2b2q] | max-regret t= 1 0.33 product | 1
+   14 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   22 fail   T= 5 src=0.00 | no flip                                                                       | max-regret t= 1 0.56 product | 0
+   23 mixed  T= 6 src=0.89 | flip t= 3 invalid tion[click[a3-gray]] -> click[back to search] | max-regret t= 3 0.11 invalid | 3
+   28 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   32 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   33 fail   T= 5 src=0.83 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   35 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   43 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 0 0.50 search  | 0
+   44 fail   T= 5 src=0.83 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   45 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 3 0.05 nav     | 0
+   48 fail   T= 5 src=0.70 | flip t= 1 product click[b08hf132pn] -> click[b09gl561xh] | max-regret t= 1 0.30 product | 1
+   52 mixed  T= 6 src=0.90 | flip t= 3 option  click[click[heather grey]] -> click[back to search] | max-regret t= 3 0.10 option  | 3
+   53 fail   T= 5 src=0.67 | flip t= 1 product click[b09npml43m] -> click[b097rk2b2q] | max-regret t= 1 0.33 product | 1
+   57 mixed  T= 6 src=0.60 | flip t= 3 option  click[5x-large] -> click[< prev] | max-regret t= 3 0.75 option  | 3
+   58 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   63 fail   T= 6 src=0.10 | flip t= 1 product click[b07jvvdj6l] -> click[b07t3vmgdg] | max-regret t= 1 0.90 product | 1
+   65 fail   T=15 src=0.00 | flip t= 0 search  search[women's swimsuits & cover -> search[women's swimsuits & cover | max-regret t= 9 1.00 product | 5
+   73 mixed  T= 6 src=0.91 | flip t= 0 search  search[men's shirts purple fit t -> search[men's shirts purple cotto | max-regret t= 0 0.09 search  | 5
+   81 fail   T= 6 src=0.91 | flip t= 1 product click[b07jvvdj6l] -> click[b09p39qn2w] | max-regret t= 1 0.09 product | 1
+   97 mixed  T=15 src=0.00 | flip t= 1 product click[b06w51mmky] -> click[b09qkjhf4q] | max-regret t= 3 1.00 search  | 6
+   99 mixed  T= 5 src=0.64 | flip t= 0 search  search[men's t-shirts classic fi -> search[officially licensed men's | max-regret t= 0 0.36 search  | 4

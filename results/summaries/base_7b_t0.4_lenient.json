@@ -1,0 +1,28 @@
+{
+  "episodes": 200,
+  "success_rate": 0.0,
+  "mean_score": 0.0438,
+  "bought_rate": 0.075,
+  "mean_steps": 14.38,
+  "invalid_action_rate": 0.5787,
+  "lenient_parsed_rate": 0.5461,
+  "truncated_responses": 99,
+  "llm_errors": 0,
+  "llm_calls": 2877,
+  "prompt_tokens_mean": 1314,
+  "prompt_tokens_max": 2530,
+  "completion_tokens_mean": 207,
+  "total_tokens": 4376400,
+  "wall_s": 715.7,
+  "tasks": 100,
+  "tasks_by_num_successes_out_of_2": {
+    "0": 100
+  },
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "temperature": 0.4,
+  "max_tokens": 512,
+  "tasks_spec": "0-99",
+  "n_per_task": 2,
+  "batch": 64,
+  "seed": 0
+}

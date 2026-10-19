@@ -1,0 +1,742 @@
+{
+ "summary": {
+  "n_trajs": 10,
+  "n_branches": 812,
+  "n_decision_points": 86,
+  "sec_per_branch": 0.2128,
+  "state_ok": 812,
+  "mismatch_vs_pass1": {
+   "reverse_order_same_env": 0,
+   "fresh_env_shuffled": 0,
+   "new_process": 0
+  },
+  "leaked_trajectories": [],
+  "alts_reaching_same_next_page": "30/320",
+  "rule_branch_reward_mean": 0.274,
+  "rule_branch_success(=1.0)": 35
+ },
+ "demo_idx": 1,
+ "demo": [
+  {
+   "t": 0,
+   "alt": "search[arch find]",
+   "is_orig": true,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.08333333333333333
+  },
+  {
+   "t": 0,
+   "alt": "search[& me color: 50.00 find 9.5]",
+   "is_orig": false,
+   "q_rule": 1.0,
+   "q_random": 0.09583333333333333
+  },
+  {
+   "t": 0,
+   "alt": "search[9.5 size: beige]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.05208333333333333
+  },
+  {
+   "t": 0,
+   "alt": "search[arch 9.5]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.020833333333333332
+  },
+  {
+   "t": 0,
+   "alt": "search[arch non slip]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.05416666666666666
+  },
+  {
+   "t": 0,
+   "alt": "search[arch women's]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.06874999999999999
+  },
+  {
+   "t": 0,
+   "alt": "search[beige me hand & loafers]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.09166666666666667
+  },
+  {
+   "t": 0,
+   "alt": "search[color: & 9.5 50.00 slip beige]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.09375
+  },
+  {
+   "t": 0,
+   "alt": "search[find 9.5 beige size: wash]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.2604166666666667
+  },
+  {
+   "t": 0,
+   "alt": "search[find me non slip, hand wash women's loafers & slip-ons with arch support with color: beige, and size: 9.5]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.15208333333333335
+  },
+  {
+   "t": 0,
+   "alt": "search[hand slip-ons me support]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.0020833333333333333
+  },
+  {
+   "t": 0,
+   "alt": "search[hand slip-ons non color: me 9.5]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.17500000000000002
+  },
+  {
+   "t": 0,
+   "alt": "search[loafers 50.00 color: non size: &]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.04583333333333333
+  },
+  {
+   "t": 0,
+   "alt": "search[loafers slip-ons non slip]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.014583333333333334
+  },
+  {
+   "t": 0,
+   "alt": "search[me & loafers]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.016666666666666666
+  },
+  {
+   "t": 0,
+   "alt": "search[me non size:]",
+   "is_orig": false,
+   "q_rule": 0.16666666666666666,
+   "q_random": 0.10416666666666666
+  },
+  {
+   "t": 0,
+   "alt": "search[non 50.00 wash & loafers]",
+   "is_orig": false,
+   "q_rule": 0.3333333333333333,
+   "q_random": 0.08541666666666665
+  },
+  {
+   "t": 0,
+   "alt": "search[non hand]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.0020833333333333333
+  },
+  {
+   "t": 0,
+   "alt": "search[slip support women's wash slip-ons arch]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.04583333333333333
+  },
+  {
+   "t": 0,
+   "alt": "search[slip-ons 50.00]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.020833333333333332
+  },
+  {
+   "t": 0,
+   "alt": "search[slip-ons 9.5 wash 50.00 slip]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.00625
+  },
+  {
+   "t": 0,
+   "alt": "search[slip-ons size: me 50.00 color: women's]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.06874999999999999
+  },
+  {
+   "t": 1,
+   "alt": "click[b094rbns2k]",
+   "is_orig": true,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.020833333333333332
+  },
+  {
+   "t": 1,
+   "alt": "click[back to search]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.07291666666666667
+  },
+  {
+   "t": 1,
+   "alt": "click[next >]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.06666666666666667
+  },
+  {
+   "t": 1,
+   "alt": "click[b09s6vn97v]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.01875
+  },
+  {
+   "t": 1,
+   "alt": "click[b0989vy7d8]",
+   "is_orig": false,
+   "q_rule": 0.3333333333333333,
+   "q_random": 0.08541666666666667
+  },
+  {
+   "t": 1,
+   "alt": "click[b0101q3v7q]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.04375
+  },
+  {
+   "t": 1,
+   "alt": "click[b07mnw91jh]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.020833333333333332
+  },
+  {
+   "t": 1,
+   "alt": "click[b00itcbd3y]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.0020833333333333333
+  },
+  {
+   "t": 1,
+   "alt": "click[b08tgmzx1f]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.0
+  },
+  {
+   "t": 1,
+   "alt": "click[b004a9l7zo]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.04583333333333333
+  },
+  {
+   "t": 1,
+   "alt": "click[b004k6b5tk]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.0
+  },
+  {
+   "t": 1,
+   "alt": "click[b07c8nsb75]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.041666666666666664
+  },
+  {
+   "t": 2,
+   "alt": "click[features]",
+   "is_orig": true,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.03125
+  },
+  {
+   "t": 2,
+   "alt": "click[back to search]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.12916666666666665
+  },
+  {
+   "t": 2,
+   "alt": "click[< prev]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.0
+  },
+  {
+   "t": 2,
+   "alt": "click[description]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.014583333333333334
+  },
+  {
+   "t": 2,
+   "alt": "click[reviews]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.014583333333333334
+  },
+  {
+   "t": 2,
+   "alt": "click[buy now]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.03333333333333333
+  },
+  {
+   "t": 2,
+   "alt": "click[8 narrow]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.06874999999999999
+  },
+  {
+   "t": 2,
+   "alt": "click[8.5 narrow]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.031249999999999997
+  },
+  {
+   "t": 2,
+   "alt": "click[9 narrow]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.029166666666666664
+  },
+  {
+   "t": 2,
+   "alt": "click[9.5 narrow]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.08333333333333333
+  },
+  {
+   "t": 2,
+   "alt": "click[10.5 narrow]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.09583333333333333
+  },
+  {
+   "t": 2,
+   "alt": "click[11 narrow]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.020833333333333332
+  },
+  {
+   "t": 2,
+   "alt": "click[black]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.056249999999999994
+  },
+  {
+   "t": 2,
+   "alt": "click[grey]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.11458333333333334
+  },
+  {
+   "t": 2,
+   "alt": "click[khaki]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.024999999999999998
+  },
+  {
+   "t": 3,
+   "alt": "click[back to search]",
+   "is_orig": true,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.04375
+  },
+  {
+   "t": 3,
+   "alt": "click[< prev]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.06874999999999999
+  },
+  {
+   "t": 4,
+   "alt": "search[slip-ons beige women's arch color: 9.5]",
+   "is_orig": true,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.06458333333333334
+  },
+  {
+   "t": 4,
+   "alt": "search[& support size:]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.04375
+  },
+  {
+   "t": 4,
+   "alt": "search[50.00 slip-ons arch wash women's size:]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.024999999999999998
+  },
+  {
+   "t": 4,
+   "alt": "search[9.5 beige]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.20833333333333331
+  },
+  {
+   "t": 4,
+   "alt": "search[arch beige 9.5]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.14791666666666667
+  },
+  {
+   "t": 4,
+   "alt": "search[arch women's slip find support]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.09166666666666666
+  },
+  {
+   "t": 4,
+   "alt": "search[beige & loafers size: arch color:]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.07500000000000001
+  },
+  {
+   "t": 4,
+   "alt": "search[find me non slip, hand wash women's loafers & slip-ons with arch support with color: beige, and size: 9.5]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.08541666666666667
+  },
+  {
+   "t": 4,
+   "alt": "search[find women's non support me loafers]",
+   "is_orig": false,
+   "q_rule": 0.3333333333333333,
+   "q_random": 0.14583333333333334
+  },
+  {
+   "t": 4,
+   "alt": "search[me find &]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.08333333333333333
+  },
+  {
+   "t": 4,
+   "alt": "search[me non find]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.0
+  },
+  {
+   "t": 4,
+   "alt": "search[non arch slip-ons me]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.008333333333333333
+  },
+  {
+   "t": 4,
+   "alt": "search[non support beige me find]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.125
+  },
+  {
+   "t": 4,
+   "alt": "search[size: me slip-ons 9.5 support women's]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.09166666666666666
+  },
+  {
+   "t": 4,
+   "alt": "search[slip & me 50.00 size:]",
+   "is_orig": false,
+   "q_rule": 0.16666666666666666,
+   "q_random": 0.0
+  },
+  {
+   "t": 4,
+   "alt": "search[slip hand]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.04583333333333333
+  },
+  {
+   "t": 4,
+   "alt": "search[slip loafers wash color:]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.0875
+  },
+  {
+   "t": 4,
+   "alt": "search[slip size: arch non]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.04375
+  },
+  {
+   "t": 4,
+   "alt": "search[support beige non find]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.10625
+  },
+  {
+   "t": 4,
+   "alt": "search[wash arch &]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.035416666666666666
+  },
+  {
+   "t": 4,
+   "alt": "search[wash women's color: find size:]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.020833333333333332
+  },
+  {
+   "t": 4,
+   "alt": "search[women's slip]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.07916666666666666
+  },
+  {
+   "t": 5,
+   "alt": "click[b09qkjhf4q]",
+   "is_orig": true,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.20833333333333331
+  },
+  {
+   "t": 5,
+   "alt": "click[back to search]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.0020833333333333333
+  },
+  {
+   "t": 5,
+   "alt": "click[next >]",
+   "is_orig": false,
+   "q_rule": 0.3333333333333333,
+   "q_random": 0.125
+  },
+  {
+   "t": 5,
+   "alt": "click[b094rbns2k]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.029166666666666664
+  },
+  {
+   "t": 5,
+   "alt": "click[b09s6vn97v]",
+   "is_orig": false,
+   "q_rule": 0.016666666666666666,
+   "q_random": 0.029166666666666664
+  },
+  {
+   "t": 5,
+   "alt": "click[b09qpx97vw]",
+   "is_orig": false,
+   "q_rule": 0.16666666666666666,
+   "q_random": 0.10625
+  },
+  {
+   "t": 5,
+   "alt": "click[b00itcbd3y]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.0
+  },
+  {
+   "t": 5,
+   "alt": "click[b09s3twksc]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.375
+  },
+  {
+   "t": 5,
+   "alt": "click[b07rpmcnkd]",
+   "is_orig": false,
+   "q_rule": 0.3333333333333333,
+   "q_random": 0.24999999999999997
+  },
+  {
+   "t": 5,
+   "alt": "click[b09ql82h1l]",
+   "is_orig": false,
+   "q_rule": 1.0,
+   "q_random": 0.5416666666666666
+  },
+  {
+   "t": 5,
+   "alt": "click[b001j6nxfs]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.020833333333333332
+  },
+  {
+   "t": 5,
+   "alt": "click[b06w51mmky]",
+   "is_orig": false,
+   "q_rule": 0.0,
+   "q_random": 0.08333333333333333
+  },
+  {
+   "t": 6,
+   "alt": "click[buy now]",
+   "is_orig": true,
+   "q_rule": 0.3333333333333333,
+   "q_random": 0.3333333333333333
+  },
+  {
+   "t": 6,
+   "alt": "click[back to search]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.008333333333333333
+  },
+  {
+   "t": 6,
+   "alt": "click[< prev]",
+   "is_orig": false,
+   "q_rule": 0.03333333333333333,
+   "q_random": 0.014583333333333334
+  },
+  {
+   "t": 6,
+   "alt": "click[description]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.0625
+  },
+  {
+   "t": 6,
+   "alt": "click[features]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.12499999999999999
+  },
+  {
+   "t": 6,
+   "alt": "click[reviews]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.18749999999999997
+  },
+  {
+   "t": 6,
+   "alt": "click[6]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.27499999999999997
+  },
+  {
+   "t": 6,
+   "alt": "click[6.5]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.12916666666666665
+  },
+  {
+   "t": 6,
+   "alt": "click[7.5]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.29166666666666663
+  },
+  {
+   "t": 6,
+   "alt": "click[8]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.2708333333333333
+  },
+  {
+   "t": 6,
+   "alt": "click[8.5]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.18749999999999997
+  },
+  {
+   "t": 6,
+   "alt": "click[9]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.29166666666666663
+  },
+  {
+   "t": 6,
+   "alt": "click[9.5]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.3145833333333333
+  },
+  {
+   "t": 6,
+   "alt": "click[10.5]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.20833333333333331
+  },
+  {
+   "t": 6,
+   "alt": "click[beige]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.3770833333333334
+  },
+  {
+   "t": 6,
+   "alt": "click[black]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.27499999999999997
+  },
+  {
+   "t": 6,
+   "alt": "click[brown]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.2708333333333333
+  },
+  {
+   "t": 6,
+   "alt": "click[navy]",
+   "is_orig": false,
+   "q_rule": 0.6666666666666666,
+   "q_random": 0.20833333333333331
+  }
+ ]
+}

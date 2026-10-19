@@ -1,0 +1,22 @@
+Cheap replay simulation on 19 failed trajectories of solvable goals (run runs/branch_llm_full)
+ground truth (full data): 15 trajectories with a flip step, 14 with a top-regret step >= 0.25; full cost 38856 continuation calls (2045 per trajectory)
+
+strategy                                      calls   cost | finds GT first flip    finds any GT flip    false flips    top-1 blame
+full: all steps, <=12 cands, M=4              38856   100% | 15/15                  15/15                0 of 43 claimed 14/14     
+M=2                                           19557    50% | 14/15                  15/15                2 of 37 claimed 12/14     
+M=1                                            9808    25% | 14/15                  15/15                12 of 51 claimed 9/14      
+steps: product+search only, M=4               17061    44% | 12/15                  12/15                0 of 26 claimed 13/14     
+steps: product+search+option, M=4             30513    79% | 14/15                  15/15                0 of 34 claimed 14/14     
+steps: first half of trajectory, M=4          25610    66% | 12/15                  12/15                0 of 23 claimed 11/14     
+cands: 3 random alternatives, M=4             15620    40% | 10/15                  12/15                0 of 25 claimed 9/14      
+cands: 3 prioritized alternatives, M=4        13436    35% | 12/15                  12/15                0 of 28 claimed 11/14     
+adaptive: 1 sample, confirm hits with 3 more    12779    33% | 14/15                  15/15                0 of 38 claimed 13/14     
+adaptive + product/search/option steps        10016    26% | 13/15                  15/15                0 of 31 claimed 13/14     
+M=1 + product/search steps                     4375    11% | 11/15                  12/15                2 of 27 claimed 8/14      
+M=1 + product/search + 3 prioritized           2037     5% | 9/15                   10/15                2 of 23 claimed 6/14      
+M=1 + product/search + 1 prioritized           1079     3% | 8/15                   8/15                 1 of 14 claimed 4/14      
+
+zero-cost heuristics (no replay):
+  blame the last step:          first flip 0/15, top-1 blame 0/14
+  blame the first product click: first flip 8/15, any flip 12/15, top-1 blame 7/14
+  uniform credit: no step is singled out (expected top-1 by chance 0.13 of trajectories)

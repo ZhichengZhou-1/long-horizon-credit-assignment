@@ -1,0 +1,19 @@
+Phase 2 comparison on 19 failed trajectories of solvable goals
+GT16 (independent M=16 re-estimate): 15 trajectories with a flip step (36 flip steps in all), 14 with top regret >= 0.25
+winner's curse: mean regret first run 0.238 -> re-estimated 0.218; at steps with first-run regret >= 0.25: 0.553 -> 0.512 (n=62)
+
+method (blames one step per trajectory)           cost/traj | first flip   any flip     top regret   spearman  
+uniform (chance level)                                    0 | 2.2/15       4.4/15       1.9/14       -         
+last step                                                 0 | 0/15         2/15         1/14         -0.09 (n=19)
+first product click                                       0 | 9/15         13/15        9/14         -         
+HCAPO action: success hindsight, low ratio            9 fwd | 0/15         2/15         0/14         -0.05 (n=19)
+HCAPO action: own outcome, high ratio                 9 fwd | 3/15         4/15         1/14         0.05 (n=19)
+policy confidence (action): low log-prob              9 fwd | 0/15         2/15         0/14         -0.05 (n=19)
+HCAPO response: success hindsight, low ratio          9 fwd | 0/15         0/15         0/14         0.09 (n=19)
+HCAPO response: own outcome, high ratio               9 fwd | 2/15         4/15         0/14         -0.09 (n=19)
+policy confidence (response): low log-prob            9 fwd | 0/15         0/15         0/14         0.10 (n=19)
+replay M=4, all candidates                       2037 calls | 14/15        15/15        6/14         0.73 (n=19)
+replay adaptive (1 + 3 to confirm)                665 calls | 13/15        15/15        6/14         0.71 (n=19)
+replay M=1                                        508 calls | 11/15        13/15        6/14         0.63 (n=19)
+
+cost units: calls = continuation LLM calls (generation, ~200 output tokens each); fwd = scoring forward passes per variant (no generation).

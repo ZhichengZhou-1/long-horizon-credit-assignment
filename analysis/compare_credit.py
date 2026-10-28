@@ -9,11 +9,13 @@ Methods (each blames one step per trajectory; per-step scores are also correlate
   HCAPO-style    from hcapo_score.py, action-only and whole-response spans; 'succ' (success hindsight,
                  low ratio = blame) and 'own' (real outcome, high ratio = blame); policy confidence
                  (low log-prob of the action without hindsight = blame)
+  RUDDER-style   optional (rudder.py): cross-fitted return-decomposition contributions; most negative = blame
   replay         from the first branch run (independent samples): M=4 all candidates, M=1, adaptive
                  (1 sample, confirm hits with 3 more); blame = earliest claimed flip, else max regret
 Also reports how much of the first run's regret survives re-estimation (winner's curse).
 
 Usage: python3 compare_credit.py REEVAL_DIR FIRST_RUN_DIR HCAPO_ACTION_JSONL HCAPO_RESPONSE_JSONL SOURCE_EPISODES
+    [RUDDER_JSONL]
 """
 import collections
 import json
@@ -23,6 +25,7 @@ import statistics
 import sys
 
 FLIP_LO, FLIP_HI, REGRET_MIN = 0.25, 0.75, 0.25
+RUDDER_SRC = 'gigpo7b_t1.0'  # rudder.py rows of the source rollouts (episodes dir name)
 
 
 def load(path):
@@ -71,7 +74,7 @@ def point_est(cands_rows, orig):
             'flip': so <= FLIP_LO and max([v[1] for v in alts], default=0) >= FLIP_HI}
 
 
-def main(reeval, first, hc_action, hc_resp, source):
+def main(reeval, first, hc_action, hc_resp, source, rudder=None):
     src = {(e['idx'], e['k']): e for e in load(source)}
     plan16 = json.load(open(os.path.join(reeval, 'plan.json')))
     agg16 = q_stats(load(os.path.join(reeval, 'branches.jsonl')))
@@ -130,6 +133,19 @@ def main(reeval, first, hc_action, hc_resp, source):
         methods['HCAPO %s: own outcome, high ratio' % label] = mk('ratio_own', 1) + (n_fwd, 'fwd')
         methods['policy confidence (%s): low log-prob' % label] = mk('logp_base', -1) + (n_fwd, 'fwd')
 
+    if rudder:
+        sc = collections.defaultdict(dict)
+        for r in load(rudder):
+            if r['src'] == RUDDER_SRC:
+                sc[(r['idx'], r['k'])][r['t']] = r['contrib']
+        blame, score = {}, {}
+        for k in keys:
+            rows = {t: -c for t, c in sc[k].items() if t in gt[k]}
+            if rows:
+                score[k] = rows
+                blame[k] = max(rows, key=lambda t: (rows[t], -t))
+        methods['RUDDER-style (LSTM return decomposition)'] = (blame, score, 0, '-')
+
     def replay(m_max, adaptive=False):
         blame, score, costs = {}, {}, []
         for k in keys:
@@ -185,4 +201,4 @@ def main(reeval, first, hc_action, hc_resp, source):
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:6])
+    main(*sys.argv[1:7])

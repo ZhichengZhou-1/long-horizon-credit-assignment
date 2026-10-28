@@ -34,8 +34,9 @@ from web_agent_site.envs.web_agent_text_env import WebAgentTextEnv  # noqa: E402
 NAV = ('back to search', 'next >', '< prev', 'buy now')
 
 
-def select_sources(episodes, n_fail, n_mixed, n_success):
-    """Pick tasks by how often the policy solved them; one source trajectory per task."""
+def select_sources(episodes, n_fail, n_mixed, n_success, ceiling=None):
+    """Pick tasks by how often the policy solved them; one source trajectory per task.
+    Failed / mixed tasks whose goal cannot be completed (ceiling < 1, see goal_ceiling.py) are skipped."""
     by_task = collections.defaultdict(list)
     for e in episodes:
         by_task[e['idx']].append(e)
@@ -43,6 +44,8 @@ def select_sources(episodes, n_fail, n_mixed, n_success):
     for idx in sorted(by_task):
         wins = sum(e['won'] for e in by_task[idx])
         kind = 'fail' if wins == 0 else 'success' if wins == len(by_task[idx]) else 'mixed'
+        if kind != 'success' and ceiling and ceiling.get(idx, 1.0) < 1.0:
+            continue
         groups[kind].append(idx)
     picked = []
     for kind, n in (('fail', n_fail), ('mixed', n_mixed), ('success', n_success)):
@@ -51,6 +54,11 @@ def select_sources(episodes, n_fail, n_mixed, n_success):
             src = next((e for e in eps if not e['won']), eps[0]) if kind != 'success' else eps[0]
             picked.append((kind, src))
     return picked, {k: len(v) for k, v in groups.items()}
+
+
+def load_ceiling(path):
+    """goal_ceiling.py output -> {idx: best achievable score}."""
+    return {int(l.split()[1]): float(l.split()[2].split('=')[1]) for l in open(path) if l.startswith('idx')}
 
 
 def restore(env, src, t):
@@ -210,7 +218,8 @@ def q_table(plan, results):
 def main(args):
     os.makedirs(args.out, exist_ok=True)
     src_eps = [json.loads(l) for l in open(args.source)]
-    picked, groups = select_sources(src_eps, args.n_fail, args.n_mixed, args.n_success)
+    ceiling = load_ceiling(args.ceiling) if args.ceiling else None
+    picked, groups = select_sources(src_eps, args.n_fail, args.n_mixed, args.n_success, ceiling)
     print(f'task groups in source: {groups}; picked {[(k, s["idx"], s["k"]) for k, s in picked]}', flush=True)
 
     env = make_env()
@@ -257,6 +266,7 @@ if __name__ == '__main__':
     p.add_argument('--n-fail', type=int, default=4)
     p.add_argument('--n-mixed', type=int, default=2)
     p.add_argument('--n-success', type=int, default=2)
+    p.add_argument('--ceiling', help='goal_ceiling.py output; skip failed tasks whose goal cannot be completed')
     p.add_argument('--m', type=int, default=4, help='continuations per (t, a)')
     p.add_argument('--max-cands', type=int, default=0, help='cap per click step (0 = all admissible)')
     p.add_argument('--search-samples', type=int, default=4, help='policy samples for alternative queries')

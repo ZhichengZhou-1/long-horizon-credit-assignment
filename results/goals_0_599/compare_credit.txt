@@ -1,0 +1,20 @@
+Phase 2 comparison on 123 failed trajectories of solvable goals
+GT16 (independent M=16 re-estimate): 102 trajectories with a flip step (218 flip steps in all), 98 with top regret >= 0.25
+winner's curse: mean regret first run 0.278 -> re-estimated 0.219; at steps with first-run regret >= 0.25: 0.542 -> 0.421 (n=526)
+
+method (blames one step per trajectory)           cost/traj | first flip   any flip     top regret   spearman  
+uniform (chance level)                                    0 | 14.1/102     26.5/102     12.0/98      -         
+last step                                                 0 | 0/102        14/102       4/98         -0.09 (n=122)
+first product click                                       0 | 53/102       69/102       46/98        -         
+HCAPO action: success hindsight, low ratio            9 fwd | 1/102        13/102       4/98         -0.08 (n=121)
+HCAPO action: own outcome, high ratio                 9 fwd | 16/102       19/102       8/98         0.08 (n=121)
+policy confidence (action): low log-prob              9 fwd | 1/102        14/102       4/98         -0.08 (n=121)
+HCAPO response: success hindsight, low ratio          9 fwd | 9/102        18/102       4/98         0.14 (n=121)
+HCAPO response: own outcome, high ratio               9 fwd | 7/102        16/102       0/98         -0.14 (n=121)
+policy confidence (response): low log-prob            9 fwd | 9/102        18/102       4/98         0.14 (n=121)
+RUDDER-style (LSTM return decomposition)                  0 | 22/102       33/102       16/98        0.04 (n=122)
+replay M=4, all candidates                       2005 calls | 75/102       82/102       50/98        0.66 (n=121)
+replay adaptive (1 + 3 to confirm)                714 calls | 78/102       87/102       52/98        0.58 (n=121)
+replay M=1                                        501 calls | 64/102       67/102       43/98        0.49 (n=112)
+
+cost units: calls = continuation LLM calls (generation, ~200 output tokens each); fwd = scoring forward passes per variant (no generation).

@@ -1,0 +1,9 @@
+{
+  "model": "langfeng01/GiGPO-Qwen2.5-7B-Instruct-WebShop",
+  "max_len": 768,
+  "steps": "$CREDIT_RUNS/scale_350_599/rudder/steps.jsonl",
+  "n": 5894,
+  "dim": 3584,
+  "tokens": 2132587,
+  "wall_s": 146.7
+}

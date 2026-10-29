@@ -1,0 +1,149 @@
+Phase 1 premise check: replay branching, continuation policy langfeng01/GiGPO-Qwen2.5-7B-Instruct-WebShop (T=1.0), M=4
+run: $CREDIT_RUNS/merged_0_99+100_349+350_599/branch_full
+coverage: 138 tasks, 1240 decision points, 48960 branches done of 48960 planned, state_ok 48960/48960
+noise: (t,a) pairs whose samples disagree on success: 2340/12240; mean within-pair std of score 0.100
+cost: 259788 continuation LLM calls (21.2 per (t,a) pair, 209.5 per decision point), 359.8M tokens, wall 40425.7 s
+controls (always-success tasks): 42 steps, mean regret 0.001, max regret 0.050 (expect ~0)
+
+FAILED SOURCE TRAJECTORIES: 130 (always-fail 67, mixed 63)
+- has a flip step (one changed action turns failure into >=75% success): 108/130
+- earliest flip step is the LAST step: 2/108
+- position of earliest flip step: {'early': 82, 'middle': 17, 'late': 9}
+- action type at earliest flip step: {'product': 60, 'search': 31, 'option': 8, 'invalid': 4, 'nav': 3, 'buy': 2}
+- trajectories with >= 2 flip steps (the same kind of mistake repeated): 77/108
+- max-regret step (regret >= 0.25) is the LAST step: 2/101
+- action type at max-regret step: {'product': 62, 'search': 25, 'option': 10, 'nav': 3, 'info': 1}
+- credit concentration: median share of total positive regret at the top step 0.28
+- no flip anywhere (no single change rescues it under this policy): 22/130  idx [1, 14, 22, 28, 32, 33, 35, 43, 44, 45, 58, 171, 218, 228, 300, 307, 312, 318, 365, 367, 389, 465]
+
+per failed trajectory: idx kind T src_score | earliest flip: t type orig -> alternative | max regret: t value type | #flip steps
+    1 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 9 0.42 search  | 0
+    6 fail   T=15 src=0.00 | flip t= 1 product click[b09nds8f4v] -> click[b09pvnlvrw] | max-regret t= 1 1.00 product | 3
+    9 fail   T= 8 src=0.71 | flip t= 1 product click[b09qqp3356] -> click[b07hrfsnl4] | max-regret t= 1 0.29 product | 2
+   10 mixed  T=15 src=0.00 | flip t= 0 search  search[men's shirts classic fit  -> search[men's shirts fit type: yo | max-regret t= 4 0.95 search  | 4
+   12 fail   T= 5 src=0.67 | flip t= 1 product click[b09npml43m] -> click[b097rk2b2q] | max-regret t= 1 0.33 product | 1
+   14 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   22 fail   T= 5 src=0.00 | no flip                                                                       | max-regret t= 1 0.56 product | 0
+   23 mixed  T= 6 src=0.89 | flip t= 3 invalid tion[click[a3-gray]] -> click[back to search] | max-regret t= 3 0.11 invalid | 3
+   28 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   32 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   33 fail   T= 5 src=0.83 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   35 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   43 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 0 0.50 search  | 0
+   44 fail   T= 5 src=0.83 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   45 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 3 0.05 nav     | 0
+   48 fail   T= 5 src=0.70 | flip t= 1 product click[b08hf132pn] -> click[b09gl561xh] | max-regret t= 1 0.30 product | 1
+   52 mixed  T= 6 src=0.90 | flip t= 3 option  click[click[heather grey]] -> click[back to search] | max-regret t= 3 0.10 option  | 3
+   53 fail   T= 5 src=0.67 | flip t= 1 product click[b09npml43m] -> click[b097rk2b2q] | max-regret t= 1 0.33 product | 1
+   57 mixed  T= 6 src=0.60 | flip t= 3 option  click[5x-large] -> click[< prev] | max-regret t= 3 0.75 option  | 3
+   58 fail   T= 5 src=0.86 | no flip                                                                       | max-regret t= 0 0.00 search  | 0
+   63 fail   T= 6 src=0.10 | flip t= 1 product click[b07jvvdj6l] -> click[b07t3vmgdg] | max-regret t= 1 0.90 product | 1
+   65 fail   T=15 src=0.00 | flip t= 0 search  search[women's swimsuits & cover -> search[women's swimsuits & cover | max-regret t= 9 1.00 product | 5
+   73 mixed  T= 6 src=0.91 | flip t= 0 search  search[men's shirts purple fit t -> search[men's shirts purple cotto | max-regret t= 0 0.09 search  | 5
+   81 fail   T= 6 src=0.91 | flip t= 1 product click[b07jvvdj6l] -> click[b09p39qn2w] | max-regret t= 1 0.09 product | 1
+   97 mixed  T=15 src=0.00 | flip t= 1 product click[b06w51mmky] -> click[b09qkjhf4q] | max-regret t= 3 1.00 search  | 6
+   99 mixed  T= 5 src=0.64 | flip t= 0 search  search[men's t-shirts classic fi -> search[officially licensed men's | max-regret t= 0 0.36 search  | 4
+  101 mixed  T= 4 src=0.80 | flip t= 3 buy     click[buy now] -> click[52"w x 84"l] | max-regret t= 3 0.20 buy     | 1
+  102 fail   T=15 src=0.00 | flip t= 5 product click[b06w51mmky] -> click[b09rprrnvp] | max-regret t= 5 1.00 product | 1
+  103 mixed  T= 5 src=0.64 | flip t= 0 search  search[men's t-shirts cotton hea -> search[men's t-shirts classic fi | max-regret t= 0 0.36 search  | 5
+  104 fail   T= 5 src=0.71 | flip t= 1 product click[b09s3bn15c] -> click[b07f2g93bj] | max-regret t= 1 0.29 product | 3
+  105 mixed  T=15 src=0.00 | flip t=13 option  click[runner] -> click[buy now] | max-regret t=13 1.00 option  | 2
+  113 fail   T= 5 src=0.70 | flip t= 1 product click[b08hf132pn] -> click[b09gl561xh] | max-regret t= 1 0.30 product | 1
+  115 mixed  T=15 src=0.00 | flip t= 0 search  search[men's sandals day comfort -> search[men's sandals day comfort | max-regret t=10 1.00 search  | 7
+  122 mixed  T= 7 src=0.44 | flip t= 1 product click[b097rk2b2q] -> click[b07mgb73nj] | max-regret t= 1 0.56 product | 1
+  124 mixed  T= 6 src=0.91 | flip t= 0 search  search[men's t-shirt classic fit -> search[men's t-shirts heather gr | max-regret t= 1 0.09 product | 2
+  132 mixed  T=15 src=0.00 | flip t= 0 search  search[men's outdoor shoes non s -> search[men's outdoor shoes non s | max-regret t=12 1.00 product | 3
+  136 mixed  T=10 src=0.64 | flip t= 1 product click[b07xpr3r7n] -> click[back to search] | max-regret t= 4 1.00 option  | 8
+  137 mixed  T=15 src=0.00 | flip t= 1 product click[b09qmj5kqh] -> click[b08x4yd5wh] | max-regret t= 1 1.00 product | 6
+  141 fail   T=12 src=0.00 | flip t= 1 product click[b098xt346y] -> click[b01mg1ltms] | max-regret t= 1 1.00 product | 2
+  143 mixed  T=15 src=0.00 | flip t= 0 search  search[men's shirts size 4t colo -> search[men's shirts fit type: me | max-regret t= 6 1.00 search  | 4
+  144 fail   T= 5 src=0.71 | flip t= 0 search  search[women's swimsuits & cover -> search[women's swimsuits & cover | max-regret t= 0 0.29 search  | 5
+  157 mixed  T=13 src=0.57 | flip t= 1 product click[b09s632dt3] -> click[b09nsc5vdg] | max-regret t= 5 0.57 search  | 7
+  160 mixed  T=15 src=0.00 | flip t= 5 option  click[b09_mm_5kqh] -> click[b08x4yd5wh] | max-regret t= 6 1.00 product | 3
+  161 mixed  T=15 src=0.00 | flip t= 8 nav     click[back to search] -> click[buy now] | max-regret t=14 1.00 nav     | 3
+  168 fail   T=15 src=0.00 | flip t= 4 nav     click[back to search] -> click[buy now] | max-regret t=14 1.00 info    | 2
+  171 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 1 0.83 product | 0
+  179 mixed  T= 8 src=0.04 | flip t= 5 product click[b09lhm4wqs] -> click[back to search] | max-regret t= 5 0.96 product | 3
+  181 fail   T=15 src=0.57 | flip t= 0 search  search[men's shorts comfortable  -> search[men's shorts comfortable  | max-regret t= 8 1.00 product | 3
+  188 fail   T=15 src=0.00 | flip t= 9 search  search[slim fit men's suits & sp -> search[slim fit men's suits & sp | max-regret t= 9 0.75 search  | 2
+  191 fail   T= 5 src=0.67 | flip t= 1 product click[b09npml43m] -> click[b097rk2b2q] | max-regret t= 1 0.33 product | 1
+  198 fail   T= 5 src=0.83 | flip t= 1 product click[b09nds8f4v] -> click[b09pvnlvrw] | max-regret t= 1 0.17 product | 4
+  204 fail   T= 6 src=0.50 | flip t= 1 product click[b09msz4vs8] -> click[b08q43ljkj] | max-regret t= 1 0.88 product | 1
+  207 mixed  T= 5 src=0.80 | flip t= 3 invalid [5x-large]</action/> -> click[back to search] | max-regret t= 3 0.20 invalid | 2
+  217 fail   T= 5 src=0.06 | flip t= 1 product click[b09q5zhrvm] -> click[b09b2hn6nn] | max-regret t= 1 0.94 product | 1
+  218 fail   T= 7 src=0.70 | no flip                                                                       | max-regret t= 4 0.18 product | 0
+  219 fail   T=15 src=0.00 | flip t= 1 product click[b09m63b87v] -> click[b01hqtwl6s] | max-regret t= 1 1.00 product | 5
+  228 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 1 0.90 product | 0
+  240 fail   T= 8 src=0.00 | flip t= 1 product click[b07cktxs1j] -> click[b09py89b1s] | max-regret t= 1 0.50 product | 2
+  242 fail   T=15 src=0.00 | flip t=10 option  click[basil suede] -> click[buy now] | max-regret t=10 1.00 option  | 4
+  248 mixed  T= 4 src=0.80 | flip t= 3 buy     click[buy now] -> click[< prev] | max-regret t= 3 0.15 buy     | 1
+  249 mixed  T= 5 src=0.80 | flip t= 2 option  click[39 x 49 in] -> click[< prev] | max-regret t= 3 0.20 option  | 2
+  252 mixed  T= 5 src=0.89 | flip t= 0 search  search[men's henleys short sleev -> search[slim fit men's henleys sh | max-regret t= 0 0.11 search  | 5
+  263 mixed  T=15 src=0.00 | flip t= 0 search  search[men's dress shirt classic -> search[men's dress shirts cotton | max-regret t= 7 0.97 option  | 7
+  265 mixed  T=15 src=0.00 | flip t= 7 search  search[slim fit men's t-shirt wh -> search[men's henleys short sleev | max-regret t= 7 1.00 search  | 3
+  266 fail   T= 5 src=0.50 | flip t= 1 product click[b09klqllt2] -> click[b09p39qn2w] | max-regret t= 1 0.50 product | 1
+  275 fail   T= 5 src=0.00 | flip t= 0 search  search[women's lingerie sleep &  -> search[women's lingerie sleep &  | max-regret t= 0 0.86 search  | 2
+  283 mixed  T= 5 src=0.64 | flip t= 0 search  search[men's t-shit classic fit  -> search[men's t-shirts classic fi | max-regret t= 0 0.36 search  | 3
+  284 fail   T=11 src=0.57 | flip t= 0 search  search[women's lingerie short sl -> search[women's lingerie pink sma | max-regret t= 1 0.86 product | 4
+  285 fail   T=15 src=0.00 | flip t= 8 product click[b09qpx97vw] -> click[b09rprrnvp] | max-regret t= 8 1.00 product | 1
+  300 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 8 0.62 search  | 0
+  302 fail   T= 4 src=0.33 | flip t= 1 product click[b01ex1bwe4] -> click[b07l6dv555] | max-regret t= 1 0.67 product | 1
+  305 mixed  T=15 src=0.62 | flip t= 0 search  search[men's henleys slim fit lo -> search[men's henleys slim fit lo | max-regret t= 9 1.00 search  | 7
+  307 fail   T= 5 src=0.05 | no flip                                                                       | max-regret t= 3 0.03 option  | 0
+  309 mixed  T=15 src=0.00 | flip t= 3 search  search[eco friendly heavy duty a -> search[eco-friendly heavy duty a | max-regret t= 6 1.00 search  | 6
+  312 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 4 0.50 option  | 0
+  318 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 6 0.90 product | 0
+  324 mixed  T= 5 src=0.57 | flip t= 1 product click[b09s3bn15c] -> click[b07f2g93bj] | max-regret t= 1 0.61 product | 3
+  337 fail   T= 4 src=0.05 | flip t= 1 product click[b09qmj5kqh] -> click[b08pfrp4rn] | max-regret t= 1 0.70 product | 1
+  344 mixed  T= 5 src=0.64 | flip t= 0 search  search[men's t-shirts classic fi -> search[officially licensed men's | max-regret t= 1 0.39 product | 5
+  345 fail   T=12 src=0.00 | flip t= 1 product click[b07t3vmgdg] -> click[b0969g2dh8] | max-regret t= 1 1.00 product | 1
+  348 mixed  T=15 src=0.00 | flip t= 0 search  search[men's polo relaxed fit he -> search[men's polo relaxed fit he | max-regret t=10 1.00 product | 4
+  353 mixed  T= 5 src=0.33 | flip t= 1 product click[b00ed8oh2c] -> click[back to search] | max-regret t= 1 0.67 product | 4
+  359 mixed  T= 6 src=0.00 | flip t= 1 product click[b07xpr3r7n] -> click[b08226ndzw] | max-regret t= 1 1.00 product | 5
+  365 fail   T=10 src=0.00 | no flip                                                                       | max-regret t= 4 0.66 product | 0
+  367 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 6 0.67 product | 0
+  368 fail   T= 4 src=0.33 | flip t= 1 product click[b01ex1bwe4] -> click[b07l6dv555] | max-regret t= 1 0.67 product | 1
+  380 mixed  T=15 src=0.00 | flip t= 1 product click[b07dkgjr74] -> click[b07hrfsnl4] | max-regret t= 5 1.00 product | 5
+  386 mixed  T= 5 src=0.86 | flip t= 2 invalid  -> click[back to search] | max-regret t= 2 0.14 invalid | 3
+  389 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 2 0.33 nav     | 0
+  390 mixed  T= 5 src=0.71 | flip t= 1 product click[b09s3bn15c] -> click[b07f2g93bj] | max-regret t= 1 0.32 product | 1
+  395 fail   T=15 src=0.00 | flip t= 1 product click[b06w51mmky] -> click[b09qkjhf4q] | max-regret t= 1 1.00 product | 6
+  396 mixed  T= 5 src=0.57 | flip t= 1 product click[b09q67h373] -> click[b078wsnd96] | max-regret t= 1 0.43 product | 4
+  402 mixed  T=10 src=0.67 | flip t= 1 product click[b09nd9dp7j] -> click[b074z315kk] | max-regret t= 1 0.58 product | 2
+  406 fail   T= 6 src=0.91 | flip t= 1 product click[b09p7h5yk7] -> click[b09p39qn2w] | max-regret t= 4 0.45 option  | 1
+  411 mixed  T=15 src=0.00 | flip t= 1 product click[b09r9ycm6r] -> click[b07mgb73nj] | max-regret t=10 1.00 search  | 4
+  417 fail   T= 5 src=0.45 | flip t= 1 product click[b09r9ycm6r] -> click[b09q67h373] | max-regret t= 1 0.70 product | 1
+  418 mixed  T=15 src=0.00 | flip t= 4 product click[b01bv3xrg8] -> click[b078fl4788] | max-regret t= 4 1.00 product | 4
+  428 mixed  T= 6 src=0.91 | flip t= 1 product click[b07jvvdj6l] -> click[b09gl561xh] | max-regret t= 1 0.09 product | 2
+  434 fail   T=11 src=0.70 | flip t= 1 product click[b08hf132pn] -> click[b09gl561xh] | max-regret t= 7 0.48 product | 2
+  449 mixed  T=15 src=0.00 | flip t= 1 invalid oal heather charcoal -> search[men's long sleeve charcoa | max-regret t= 8 1.00 product | 6
+  451 mixed  T= 7 src=0.82 | flip t= 0 search  search[men's t-shirts classic fi -> search[men's t-shirts color: whi | max-regret t= 2 0.41 option  | 6
+  465 fail   T=15 src=0.00 | no flip                                                                       | max-regret t= 4 0.67 product | 0
+  469 fail   T= 5 src=0.70 | flip t= 1 product click[b08hf132pn] -> click[b09gl561xh] | max-regret t= 1 0.30 product | 1
+  476 mixed  T= 5 src=0.75 | flip t= 1 product click[b085wqkrrj] -> click[b09s3bn15c] | max-regret t= 1 0.25 product | 3
+  492 fail   T= 6 src=0.70 | flip t= 1 product click[b08hf132pn] -> click[b0969g2dh8] | max-regret t= 1 0.48 product | 1
+  496 fail   T=10 src=0.57 | flip t= 6 product click[b09klqllt2] -> click[b078wsnd96] | max-regret t= 6 0.43 product | 1
+  497 mixed  T= 5 src=0.71 | flip t= 0 search  search[women's swimsuits & cover -> search[women's swimsuits & cover | max-regret t= 0 0.29 search  | 5
+  503 mixed  T=15 src=0.00 | flip t= 1 product click[b09nnmv9ln] -> click[b09q67h373] | max-regret t= 5 1.00 search  | 7
+  507 fail   T= 5 src=0.44 | flip t= 1 product click[b09npml43m] -> click[b07mgb73nj] | max-regret t= 1 0.47 product | 1
+  511 mixed  T= 4 src=0.57 | flip t= 0 search  search[women's lingerie khaki kh -> search[women's lingerie khaki kh | max-regret t= 2 0.43 option  | 4
+  516 mixed  T=15 src=0.00 | flip t= 1 product click[b08hnftg83] -> click[back to search] | max-regret t= 8 1.00 search  | 2
+  517 fail   T=12 src=0.80 | flip t= 2 product click[b09hx5cd2d] -> click[b00o30jldk] | max-regret t= 2 0.40 product | 5
+  525 mixed  T=14 src=0.40 | flip t=11 search  search[1080p hd high speed video -> search[high speed 1080p hd high  | max-regret t=11 0.80 search  | 1
+  526 mixed  T=13 src=0.75 | flip t= 1 product click[b09qqp3356] -> click[b09s3bn15c] | max-regret t= 5 0.56 product | 7
+  529 mixed  T= 4 src=0.75 | flip t= 0 search  search[women's pants tummy contr -> search[women's pants machine was | max-regret t= 0 0.25 search  | 2
+  535 mixed  T= 5 src=0.83 | flip t= 1 product click[b01djgwdba] -> click[b08t84r7v2] | max-regret t= 3 0.17 option  | 2
+  537 mixed  T=15 src=0.00 | flip t= 0 search  search[men's dress shirts cotton -> search[men's dress shirts cotton | max-regret t= 7 1.00 product | 9
+  539 fail   T= 6 src=0.10 | flip t= 1 product click[b07jvvdj6l] -> click[b07t3vmgdg] | max-regret t= 1 0.87 product | 1
+  552 fail   T= 6 src=0.91 | flip t= 1 product click[b07jvvdj6l] -> click[b09p39qn2w] | max-regret t= 1 0.09 product | 1
+  557 fail   T= 6 src=0.10 | flip t= 1 product click[b07jvvdj6l] -> click[b07t3vmgdg] | max-regret t= 1 0.90 product | 1
+  563 mixed  T=10 src=0.71 | flip t= 3 search  search[men's t-shirts & tanks cl -> search[men's t-shirts & tanks cl | max-regret t= 6 0.68 option  | 5
+  564 mixed  T= 5 src=0.83 | flip t= 2 option  click[12 pack mix short sleeve] -> click[back to search] | max-regret t= 2 0.17 option  | 3
+  569 fail   T= 5 src=0.83 | flip t= 1 product click[b09npml43m] -> click[b097rk2b2q] | max-regret t= 1 0.17 product | 1
+  571 fail   T= 9 src=0.70 | flip t= 1 product click[b07jvvdj6l] -> click[b0969g2dh8] | max-regret t= 5 0.82 product | 2
+  574 mixed  T=15 src=0.00 | flip t= 8 nav     click[back to search] -> click[buy now] | max-regret t= 8 1.00 nav     | 2
+  576 mixed  T= 6 src=0.82 | flip t= 0 search  search[men's t-shirts white clas -> search[men's t shirts classic fi | max-regret t= 0 0.39 search  | 6
+  581 mixed  T= 5 src=0.71 | flip t= 1 product click[b09s3bn15c] -> click[b07f2g93bj] | max-regret t= 1 0.29 product | 2
+  583 mixed  T= 5 src=0.83 | flip t= 3 option  click[black-gray] -> click[5 ft 2 in x 7 ft 4 in] | max-regret t= 4 0.17 buy     | 2
+  588 mixed  T= 6 src=0.89 | flip t= 0 search  search[men's henleys short sleev -> search[slim fit men's henleys sh | max-regret t= 1 0.11 product | 5
+  595 mixed  T=11 src=0.83 | flip t= 1 product click[b09bncfgly] -> click[b09dg3ythy] | max-regret t= 3 0.62 search  | 4

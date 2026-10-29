@@ -1,0 +1,14 @@
+{
+  "model": "langfeng01/GiGPO-Qwen2.5-7B-Instruct-WebShop",
+  "temperature": 1.0,
+  "m": 16,
+  "seed": 1,
+  "source_run": "$CREDIT_RUNS/scale_350_599/branch_full",
+  "decision_points": 433,
+  "pairs": 883,
+  "branches": 14128,
+  "state_ok_branches": 14128,
+  "llm_calls": 68575,
+  "tokens": 93810480,
+  "wall_s": 10232.7
+}

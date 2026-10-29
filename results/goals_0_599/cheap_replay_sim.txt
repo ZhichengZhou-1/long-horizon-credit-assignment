@@ -1,0 +1,22 @@
+Cheap replay simulation on 123 failed trajectories of solvable goals (run $CREDIT_RUNS/merged_0_99+100_349+350_599/branch_full)
+ground truth (full data): 108 trajectories with a flip step, 101 with a top-regret step >= 0.25; full cost 247682 continuation calls (2014 per trajectory)
+
+strategy                                      calls   cost | finds GT first flip    finds any GT flip    false flips    top-1 blame
+full: all steps, <=12 cands, M=4             247682   100% | 108/108                108/108              0 of 337 claimed 101/101   
+M=2                                          124628    50% | 87/108                 104/108              28 of 295 claimed 67/101    
+M=1                                           62695    25% | 98/108                 107/108              134 of 445 claimed 52/101    
+steps: product+search only, M=4              112676    45% | 91/108                 93/108               0 of 187 claimed 87/101    
+steps: product+search+option, M=4            198219    80% | 99/108                 102/108              0 of 276 claimed 97/101    
+steps: first half of trajectory, M=4         160703    65% | 89/108                 89/108               0 of 178 claimed 74/101    
+cands: 3 random alternatives, M=4            101227    41% | 69/108                 89/108               0 of 182 claimed 65/101    
+cands: 3 prioritized alternatives, M=4        88819    36% | 82/108                 86/108               0 of 200 claimed 81/101    
+adaptive: 1 sample, confirm hits with 3 more    88826    36% | 96/108                 107/108              0 of 302 claimed 89/101    
+adaptive + product/search/option steps        72230    29% | 89/108                 102/108              0 of 252 claimed 86/101    
+M=1 + product/search steps                    28865    12% | 83/108                 92/108               43 of 218 claimed 54/101    
+M=1 + product/search + 3 prioritized          13743     6% | 64/108                 75/108               25 of 171 claimed 45/101    
+M=1 + product/search + 1 prioritized           7407     3% | 42/108                 56/108               11 of 97 claimed 23/101    
+
+zero-cost heuristics (no replay):
+  blame the last step:          first flip 2/108, top-1 blame 2/101
+  blame the first product click: first flip 55/108, any flip 78/108, top-1 blame 43/101
+  uniform credit: no step is singled out (expected top-1 by chance 0.12 of trajectories)

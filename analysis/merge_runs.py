@@ -13,6 +13,7 @@ import sys
 SUBDIRS = ['gigpo_eval/gigpo7b_t1.0', 'branch_full', 'reeval16', 'hcapo_action', 'hcapo_response']
 LISTS = ('plan.json', 'q_table.json')
 LINES = ('episodes.jsonl', 'branches.jsonl', 'hcapo_scores.jsonl')
+SUMMED = ('decision_points', 'pairs', 'branches', 'state_ok_branches', 'llm_calls', 'tokens', 'wall_s')
 
 
 def main(out, roots):
@@ -33,6 +34,18 @@ def main(out, roots):
                     for p in have:
                         f.writelines(open(p))
             print(f'{dst}: from {len(have)} runs')
+        # branching runs: settings from the first run, counts summed (the reports read model / T / M)
+        sums = [os.path.join(r, sub, 'summary.json') for r in roots]
+        if sub in ('branch_full', 'reeval16') and all(os.path.exists(p) for p in sums):
+            parts = [json.load(open(p)) for p in sums]
+            merged = {k: v for k, v in parts[0].items() if k != 'source_run'}
+            for k, v in merged.items():
+                if isinstance(v, list):
+                    merged[k] = [x for s in parts for x in s.get(k, [])]
+                elif k in SUMMED:
+                    merged[k] = sum(s.get(k, 0) for s in parts)
+            merged['merged_from'] = len(parts)
+            json.dump(merged, open(os.path.join(out, sub, 'summary.json'), 'w'), indent=2)
     with open(os.path.join(out, 'goal_ceiling.txt'), 'w') as f:
         for r in roots:
             f.writelines(l for l in open(os.path.join(r, 'goal_ceiling.txt')) if l.startswith('idx'))

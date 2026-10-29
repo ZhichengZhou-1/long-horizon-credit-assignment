@@ -11,9 +11,11 @@ below are the defaults of the scripts in this folder; `results/` keeps the summa
 | 2026-10-18 | `gigpo_eval.sh` | GiGPO-7B, goals 0-99, T 0.4 x2 and 1.0 x4 | `gigpo_eval/` | 77% / 78%; per task 19 always fail, 7 mixed, 74 always succeed |
 | 2026-10-18 | `branch.sh` (`N_FAIL=4 N_MIXED=2 N_SUCCESS=2`) | branching pilot | `branch_pilot/` | 3,036 branches, 41 min |
 | 2026-10-18 | `branch.sh` | full ground truth, M=4 | `branch_full/` | 9,468 branches, 2 h |
-| 2026-10-19 | `analysis.sh` | goal ceilings, premise report, cheap-replay simulation | `results/` | 7 unsolvable goals; 0/15 decisive steps are last |
+| 2026-10-19 | `analysis.sh` | goal ceilings, premise report, cheap-replay simulation | `results/goals_0_99/` | 7 unsolvable goals; 0/15 decisive steps are last |
 | 2026-10-19 | `reeval_hcapo.sh` | HCAPO-style scores (2 spans) + independent M=16 re-estimate | `hcapo_action/`, `hcapo_response/`, `reeval16/` | 5,776 branches, 80 min |
 | 2026-10-19 | `analysis.sh` | Phase 2 v1 comparison | `compare_credit.txt` | see README |
+| 2026-10-28 | `scale_up.sh` with `GOALS=100-349`, `350-599` (two A100 40 GB, in parallel) | rollouts, replay branching, HCAPO-style scores, step embeddings, M=16 re-estimate | `scale_100_349/`, `scale_350_599/` | 78% and 80% success; 40,336 + 31,508 branches (replay + re-estimate); 9.8 h and 7.5 h |
+| 2026-10-29 | `scale_analysis.sh` | merge goals 0-599, RUDDER-style baseline, all reports | `results/goals_0_599/` | see README |
 
 Notes
 - The first base-model run (2026-10-17) used vLLM's default sampling, which applies Qwen's
